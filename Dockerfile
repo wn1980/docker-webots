@@ -1,5 +1,7 @@
 FROM nvidia/cuda:10.0-cudnn7-devel
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y \
   wget
 
@@ -25,10 +27,9 @@ RUN apt-get update && apt-get install -y \
   xserver-xorg-core \
   libxslt1.1 \
   libgd3 \
-  libfreetype6
+  libfreetype6 \
+  xvfb
   
-  
-
 RUN dpkg -i webots_2019b_amd64.deb
 RUN rm webots_2019b_amd64.deb
 
