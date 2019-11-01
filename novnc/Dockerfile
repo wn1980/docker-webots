@@ -8,15 +8,15 @@ FROM wn1980/docker-webots${tag}
 #install noVNC
 ENV NO_VNC_HOME=/opt/noVNC
 WORKDIR /opt
-RUN https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz
-RUN https://github.com/novnc/websockify/archive/v0.9.0.tar.gz
+RUN wget https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz
+RUN wget https://github.com/novnc/websockify/archive/v0.9.0.tar.gz
 
 RUN mkdir -p $NO_VNC_HOME/utils/websockify && \
-	tar xzfv noVNC-1.1.0.tar.gz --strip 1 -C $NO_VNC_HOME && \
-	tar xzfv websockify-0.9.0.tar.gz --strip 1 -C $NO_VNC_HOME/utils/websockify && \
+	tar xzfv v1.1.0.tar.gz --strip 1 -C $NO_VNC_HOME && \
+	tar xzfv v0.9.0.tar.gz --strip 1 -C $NO_VNC_HOME/utils/websockify && \
 	chmod +x -v $NO_VNC_HOME/utils/*.sh && \
 	ln -s $NO_VNC_HOME/vnc.html $NO_VNC_HOME/index.html && \
-	rm -f noVNC-1.1.0.tar.gz websockify-0.9.0.tar.gz
+	rm -f *.tar.gz
 
 #COPY ./setup/install/chrome.sh /opt/docker/install/
 #RUN /opt/docker/install/chrome.sh
@@ -51,6 +51,8 @@ ENV USER=root
 ENV HOME=/root
 
 ENV SHELL=/bin/bash
+
+ENV LIBGL_ALWAYS_SOFTWARE=true
 
 WORKDIR $HOME
 
