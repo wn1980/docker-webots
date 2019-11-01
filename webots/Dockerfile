@@ -29,7 +29,9 @@ RUN apt-get update --fix-missing && apt-get install -y \
   libxslt1.1 \
   libgd3 \
   libfreetype6 \
-  qt5-default
+  qt5-default \
+  g++ \
+  build-essential
   
 RUN dpkg -i webots_2019b-rev1_amd64.deb
 RUN rm webots_2019b-rev1_amd64.deb
