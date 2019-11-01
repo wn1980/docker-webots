@@ -2,18 +2,21 @@ ARG tag
 FROM wn1980/docker-webots${tag}
 
 # prepare libraries files
-COPY setup/noVNC-1.1.0.tar.gz /opt/
-COPY setup/websockify-0.8.0.tar.gz /opt/
+#COPY setup/noVNC-1.1.0.tar.gz /opt/
+#COPY setup/websockify-0.8.0.tar.gz /opt/
 
 #install noVNC
 ENV NO_VNC_HOME=/opt/noVNC
 WORKDIR /opt
+RUN https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz
+RUN https://github.com/novnc/websockify/archive/v0.9.0.tar.gz
+
 RUN mkdir -p $NO_VNC_HOME/utils/websockify && \
 	tar xzfv noVNC-1.1.0.tar.gz --strip 1 -C $NO_VNC_HOME && \
-	tar xzfv websockify-0.8.0.tar.gz --strip 1 -C $NO_VNC_HOME/utils/websockify && \
+	tar xzfv websockify-0.9.0.tar.gz --strip 1 -C $NO_VNC_HOME/utils/websockify && \
 	chmod +x -v $NO_VNC_HOME/utils/*.sh && \
 	ln -s $NO_VNC_HOME/vnc.html $NO_VNC_HOME/index.html && \
-	rm -f noVNC-1.1.0.tar.gz websockify-0.8.0.tar.gz
+	rm -f noVNC-1.1.0.tar.gz websockify-0.9.0.tar.gz
 
 #COPY ./setup/install/chrome.sh /opt/docker/install/
 #RUN /opt/docker/install/chrome.sh
@@ -47,11 +50,11 @@ ENV USER=root
 
 ENV HOME=/root
 
-USER $USER
-
 ENV SHELL=/bin/bash
 
 WORKDIR $HOME
+
+USER $USER
 
 #jwm ui
 #COPY setup/ui/jwm/jwmrc $HOME/.jwm
