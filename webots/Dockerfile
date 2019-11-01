@@ -33,3 +33,14 @@ RUN apt-get update && apt-get install -y \
 RUN dpkg -i webots_2019b-rev1_amd64.deb
 RUN rm webots_2019b-rev1_amd64.deb
 
+RUN apt-get update && apt-get install -y \
+  libxcb-xkb1 \
+  libxcb-icccm4 \
+  libxcb-image0 \
+  libxcb-render-util0 \
+  qt5-default
+
+#ENV QT_DEBUG_PLUGINS=1
+
+RUN ln -sf /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/ /usr/bin/
+
