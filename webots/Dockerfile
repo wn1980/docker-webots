@@ -28,21 +28,20 @@ RUN apt-get update && apt-get install -y \
   libxslt1.1 \
   libgd3 \
   libfreetype6 \
-  xvfb
+  qt5-default
   
 RUN dpkg -i webots_2019b-rev1_amd64.deb
 RUN rm webots_2019b-rev1_amd64.deb
 
-RUN apt-get update && apt-get install -y \
-  libxcb-xkb1 \
-  libxcb-icccm4 \
-  libxcb-image0 \
-  libxcb-render-util0 \
-  qt5-default
+#RUN apt-get update && apt-get install -y \
+#  libxcb-xkb1 \
+#  libxcb-icccm4 \
+#  libxcb-image0 \
+#  libxcb-render-util0 
 
 #ENV QT_DEBUG_PLUGINS=1
 
-RUN ln -sf /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/ /usr/bin/
+#RUN ln -sf /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/ /usr/bin/
 
 ENV QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/
 
