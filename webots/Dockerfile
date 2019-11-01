@@ -1,4 +1,5 @@
-FROM nvidia/cuda:9.0-cudnn7-devel
+#FROM nvidia/cuda:9.0-cudnn7-devel
+FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 

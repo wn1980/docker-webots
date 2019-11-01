@@ -21,7 +21,7 @@ docker rm -f $NAME
 
 docker system prune -f
 
-docker run -it --rm --name $NAME --gpus all \
+docker run -d --name $NAME --gpus all \
 	--network host \
 	--privileged \
 	-v /dev:/dev \
@@ -30,4 +30,4 @@ docker run -it --rm --name $NAME --gpus all \
 	-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
 	-e VNC_PASSWORD=vnc123 \
 	-e VNC_RESOLUTION=$p1080 \
-	wn1980/docker-webots${tag} bash
+	wn1980/webots-novnc${tag} startup.sh
