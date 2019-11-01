@@ -1,5 +1,5 @@
 ARG tag
-FROM wn1980/w-ros-kinetic${tag}
+FROM wn1980/docker-webots${tag}
 
 # prepare libraries files
 COPY ./setup/*.tar.gz /opt/
@@ -54,7 +54,7 @@ COPY ./setup/ui/wallpapers /opt/docker/wallpapers
 # VNC ports
 EXPOSE 5901 6901
 
-#USER $USER
+
 
 ENV SHELL=/bin/bash
 
@@ -66,4 +66,6 @@ ENV SHELL=/bin/bash
 #COPY ./setup/ui/jwm/jwmrc $HOME/.jwm
 #RUN ln -s $HOME/.jwm/main.jwmrc $HOME/.jwmrc
 
-#USER root
+ENV USER=root
+ENV HOME=/root
+USER $USER

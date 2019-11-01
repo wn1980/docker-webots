@@ -18,7 +18,7 @@ else
 fi
 
 # Chrome browser
-/opt/docker/bin/chrome-init.sh
+#/opt/docker/bin/chrome-init.sh
 
 # nginx web server
 #/usr/sbin/nginx
