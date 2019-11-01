@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN wget https://github.com/cyberbotics/webots/releases/download/R2019b-rev1/webots_2019b-rev1_amd64.deb
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --fix-missing && apt-get install -y \
   libatk1.0-0 \
   ffmpeg \
   libdbus-1-3 \

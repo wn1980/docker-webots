@@ -2,7 +2,8 @@ ARG tag
 FROM wn1980/docker-webots${tag}
 
 # prepare libraries files
-COPY setup/*.tar.gz /opt/
+COPY setup/noVNC-1.1.0.tar.gz /opt/
+COPY setup/websockify-0.8.0.tar.gz /opt/
 
 #install noVNC
 ENV NO_VNC_HOME=/opt/noVNC
@@ -53,5 +54,5 @@ ENV SHELL=/bin/bash
 WORKDIR $HOME
 
 #jwm ui
-COPY setup/ui/jwm/jwmrc $HOME/.jwm
-RUN ln -s $HOME/.jwm/main.jwmrc $HOME/.jwmrc
+#COPY setup/ui/jwm/jwmrc $HOME/.jwm
+#RUN ln -s $HOME/.jwm/main.jwmrc $HOME/.jwmrc
