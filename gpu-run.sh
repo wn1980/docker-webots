@@ -17,17 +17,16 @@ fi
 
 NAME=webots
 
-docker rm -f $NAME
+#docker rm -f $NAME
 
-docker system prune -f
+#docker system prune -f
 
-docker run -d --name $NAME --gpus all \
+docker run -it --name $NAME --gpus all \
 	--network host \
 	--privileged \
 	-v /dev:/dev \
 	-v /run/systemd:/run/systemd \
 	-v /etc/localtime:/etc/localtime:ro \
 	-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-	-e VNC_PASSWORD=vnc123 \
-	-e VNC_RESOLUTION=$p1080 \
-	wn1980/webots-novnc${tag} startup.sh
+	-e DISPLAY \
+	cyberbotics/webots:latest
