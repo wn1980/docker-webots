@@ -13,4 +13,4 @@ export DEBIAN_FRONTEND=noninteractive
 
 ${WEBOTS_HOME}/webots &
 
-cd /webots_data && jupyter lab --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.root_dir=''
+cd /webots_space && jupyter lab --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.root_dir=''
