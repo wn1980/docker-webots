@@ -17,7 +17,7 @@ fi
 
 NAME=webots
 
-#docker rm -f $NAME
+docker rm -f $NAME
 
 #docker system prune -f
 
