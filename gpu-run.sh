@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 p1080=1920x1080
 p720=1280x720
 p169=1600x900
@@ -15,7 +17,7 @@ else
 	exit 0
 fi
 
-NAME=webots
+NAME=webots-lab
 
 docker rm -f $NAME
 
