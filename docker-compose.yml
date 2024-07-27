@@ -1,0 +1,33 @@
+version: '2.3'
+
+volumes:
+  webots_data:
+    driver: local
+
+services:
+  webots:
+    image: cyberbotics/webots:latest
+    container_name: webots
+    privileged: true
+    #restart: unless-stopped
+    volumes:
+      - webots_data:/webots_data
+    environment:
+      - DISPLAY
+      - UID=1000
+      - GID=1000 
+      - GIDLIST=1000
+    ports:
+      - 8096:8096
+      - 8920:8920
+    devices:
+      - /dev:/dev
+      - /dev/dri:/dev/dri # VAAPI/NVDEC/NVENC render nodes
+      - /dev/vchiq:/dev/vchiq # MMAL/OMX on Raspberry Pi
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro 
+      - /run/systemd:/run/systemd
+    command: tail -f /dev/null
+    #tty: true
+    runtime: nvidia # Expose NVIDIA GPUs
+

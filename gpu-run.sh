@@ -21,6 +21,8 @@ NAME=webots
 
 #docker system prune -f
 
+xhost +local:root > /dev/null 2>&1
+
 docker run -it --name $NAME --gpus all \
 	--network host \
 	--privileged \
@@ -28,5 +30,6 @@ docker run -it --name $NAME --gpus all \
 	-v /run/systemd:/run/systemd \
 	-v /etc/localtime:/etc/localtime:ro \
 	-v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+	-v webots_data:/webots_data \
 	-e DISPLAY \
-	cyberbotics/webots:latest
+	wn1980/webots
